@@ -18,3 +18,11 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes('FiraCode-VF.woff2')) {
+      return false;
+    }
+    return true;
+  });
+  

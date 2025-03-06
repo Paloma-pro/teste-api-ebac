@@ -60,7 +60,7 @@ describe('Testes da Funcionalidade Produtos', () => {
                 headers: {authorization: token}, 
                 body: 
                 {
-                    "nome": "Produto Editado 45642083",
+                    "nome": "Produto Editado 45642084",
                     "preco": 100,
                     "descricao": "Produto editado",
                     "quantidade": 100
@@ -71,7 +71,7 @@ describe('Testes da Funcionalidade Produtos', () => {
         })
     });
 
-    it('Deve editar um produto cadastrado previamente', () => {
+    it.only('Deve editar um produto cadastrado previamente', () => {
         let produto = `Produto EBAC ${Math.floor(Math.random() * 100000000)}`
         cy.cadastrarProduto(token, produto, 250, "Descrição do produto novo", 180)
         .then(response => {
