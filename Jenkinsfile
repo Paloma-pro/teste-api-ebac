@@ -17,8 +17,9 @@ pipeline {
         stage('Executar Testes de API') {
             steps {
                 bat '''set NO_COLOR=1
-                      npx mocha --reporter spec'''  
+                npx mocha cypress/e2e/**/*.js --reporter spec'''  
             }
         }
+
     }
 }
