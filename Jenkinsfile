@@ -23,7 +23,7 @@ pipeline {
         stage('Executar Testes de API') {
             steps {
                 bat '''set NO_COLOR=1
-                npx mocha --loader ts-node/esm "file:///C:/ProgramData/Jenkins/.jenkins/workspace/Testes API/cypress/e2e/**/*.js" --reporter spec'''
+                      npx cypress run'''
             }
         }
     }
