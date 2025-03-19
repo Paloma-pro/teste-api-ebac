@@ -8,13 +8,12 @@ pipeline {
             }
         }
 
-        stage('Aguardar Servidor Iniciar') {
+        stage('Verificar se o servidor está ativo') {
             steps {
-                script {
-                    sleep 30  // Aguarda 30 segundos para o servidor iniciar
-                }
+                bat 'curl http://localhost:3000'  // Altere para o seu endpoint do servidor
             }
         }
+
         
         stage('Checkout Código') {
             steps {
