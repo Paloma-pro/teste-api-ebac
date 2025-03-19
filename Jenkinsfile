@@ -2,6 +2,19 @@ pipeline {
     agent any
 
     stages {
+        stage('Subir servidor') {
+            steps {
+                bat 'start /b npm start'
+            }
+        }
+
+        stage('Aguardar Servidor Iniciar') {
+            steps {
+                script {
+                    sleep 30  // Aguarda 30 segundos para o servidor iniciar
+                }
+            }
+        }
         
         stage('Checkout Código') {
             steps {
