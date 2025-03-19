@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Subir servidor') {
+            steps {
+                bat 'start /b npm start'
+            }
+        }
+        
         stage('Checkout Código') {
             steps {
                 git branch: 'main', url: 'https://github.com/Paloma-pro/teste-e2e-ebac.git'
