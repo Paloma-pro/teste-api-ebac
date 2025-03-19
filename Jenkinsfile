@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Subir servidor') {
             steps {
-                bat 'start /b npm start'
+                bat 'npm start'
             }
         }
 
         stage('Verificar se o servidor está ativo') {
             steps {
-                bat 'curl http://localhost:3000'  // Altere para o seu endpoint do servidor
+                bat 'curl http://localhost:3000/'  
             }
         }
 
