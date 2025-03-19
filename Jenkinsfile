@@ -10,7 +10,7 @@ pipeline {
         
         stage('Checkout Código') {
             steps {
-                git branch: 'main', url: 'https://github.com/Paloma-pro/teste-e2e-ebac.git'
+                git branch: 'main', url: 'https://github.com/Paloma-pro/teste-api-ebac.git'
             }
         }
 
