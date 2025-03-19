@@ -23,7 +23,7 @@ pipeline {
         stage('Executar Testes de API') {
             steps {
                 bat '''set NO_COLOR=1
-                      npx cypress run --browser edge --headless'''
+                      npx cypress run --headless'''
             }
         }
     }
