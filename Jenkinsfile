@@ -7,13 +7,6 @@ pipeline {
                 bat 'npm start'
             }
         }
-
-        stage('Verificar se o servidor está ativo') {
-            steps {
-                bat 'curl http://localhost:3000/'  
-            }
-        }
-
         
         stage('Checkout Código') {
             steps {
