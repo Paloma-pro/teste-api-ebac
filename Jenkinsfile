@@ -2,11 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Subir servidor') {
-            steps {
-                bat 'npm start'
-            }
-        }
+        
         
         stage('Checkout Código') {
             steps {
