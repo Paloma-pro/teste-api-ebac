@@ -2,18 +2,17 @@ pipeline {
     agent any
 
     stages {
-        
-        stage('Checkout Código') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Paloma-pro/teste-api-ebac.git'
-            }
-        }
-
         stage('Subir servidor') { 
             steps { bat 'start /b npm start' 
                    script { waitUntil { bat(script: "curl -s ", returnStatus: true) == 0} 
                           } 
                   } 
+        }
+        
+        stage('Checkout Código') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Paloma-pro/teste-api-ebac.git'
+            }
         }
 
         stage('Instalar Dependências') {
