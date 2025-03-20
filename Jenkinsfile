@@ -2,10 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Subir servidor') {
-            steps {
-                bat 'start /b npm start'
-            }
+        stage('Subir servidor') { 
+            steps { bat 'start /b npm start' 
+                   script { waitUntil 
+                           { bat(script: "curl -s ", returnStatus: true) == 0 
+                           } 
+                          } 
+                  } 
         }
         
         stage('Checkout Código') {
