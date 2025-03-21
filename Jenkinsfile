@@ -17,7 +17,7 @@ pipeline {
 
         stage('Subir servidor') { 
             steps { bat 'start /b npm start' 
-                   script { waitUntil { bat(script: "curl -s ", returnStatus: true) == 0} 
+                   script { waitUntil { bat(script: "curl -s http://localhost:3000", returnStatus: true) == 0} 
                           } 
                   } 
         }
