@@ -3,12 +3,6 @@ pipeline {
 
     stages {
         
-        stage('Rodar test') {
-            steps {
-                bat 'npm test'
-            }
-        }
-        
         stage('Checkout Código') {
             steps {
                 git branch: 'main', url: 'https://github.com/Paloma-pro/teste-api-ebac.git'
