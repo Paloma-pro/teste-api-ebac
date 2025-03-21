@@ -8,6 +8,12 @@ pipeline {
                           } 
                   } 
         }
+
+        stage('Rodar test') {
+            steps {
+                bat 'npm test'
+            }
+        }
         
         stage('Checkout Código') {
             steps {
