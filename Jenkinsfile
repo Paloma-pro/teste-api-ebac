@@ -9,6 +9,12 @@ pipeline {
             }
         }
 
+        stage('Instalar Dependências') {
+            steps {
+                bat 'npm install'  
+            }
+        }
+
         stage('Subir servidor') { 
             steps { bat 'start /b npm start' 
                    script { waitUntil { bat(script: "curl -s ", returnStatus: true) == 0} 
@@ -16,16 +22,16 @@ pipeline {
                   } 
         }
 
-        stage('Instalar Dependências') {
-            steps {
-                bat 'npm install'  
-            }
-        }
-
         stage('Executar Testes de API') {
             steps {
                 bat '''set NO_COLOR=1
                       npx cypress run'''
+            }
+        }
+
+        stage('Rodar test') {
+            steps {
+                bat 'npm test'
             }
         }
     }
