@@ -2,13 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Subir servidor') { 
-            steps { bat 'start /b npm start' 
-                   script { waitUntil { bat(script: "curl -s ", returnStatus: true) == 0} 
-                          } 
-                  } 
-        }
-
+        
         stage('Rodar test') {
             steps {
                 bat 'npm test'
@@ -19,6 +13,13 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/Paloma-pro/teste-api-ebac.git'
             }
+        }
+
+        stage('Subir servidor') { 
+            steps { bat 'start /b npm start' 
+                   script { waitUntil { bat(script: "curl -s ", returnStatus: true) == 0} 
+                          } 
+                  } 
         }
 
         stage('Instalar Dependências') {
