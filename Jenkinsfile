@@ -2,6 +2,18 @@ pipeline {
     agent any
 
     stages {
+        stage('Subir servidor') { 
+            steps { bat 'start /b npm start' 
+                   script { waitUntil { bat(script: "curl -s ", returnStatus: true) == 0} 
+                          } 
+                  } 
+        }
+
+        stage('Rodar test') {
+            steps {
+                bat 'npm test'
+            }
+        }
         
         stage('Checkout Código') {
             steps {
@@ -15,13 +27,6 @@ pipeline {
             }
         }
 
-        stage('Subir servidor') { 
-            steps { bat 'start /b npm start' 
-                   script { waitUntil { bat(script: "curl -s http://localhost:3000", returnStatus: true) == 0} 
-                          } 
-                  } 
-        }
-
         stage('Executar Testes de API') {
             steps {
                 bat '''set NO_COLOR=1
@@ -29,10 +34,5 @@ pipeline {
             }
         }
 
-        stage('Rodar test') {
-            steps {
-                bat 'npm test'
-            }
-        }
     }
 }
